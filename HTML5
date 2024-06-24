@@ -1,0 +1,168 @@
+1. What will be the output of the following markup?
+<ol>
+ <li value="one" />
+ <li value="two" />
+ <li value="three" />
+</ol>
+
+1.
+2.
+3.
+
+
+2. You must create an HTML website with a paragraph and a list. You write the following script to achieve the task:
+<body>
+  <!-- A short list of HTML frameworks-->
+  <p main="track>You can include the following frameworks while building an HTML website --></p>
+  <ol>
+     <li>CSS</li> 
+     <li>JavaScript</li>
+     <li>Bootstrap</li>
+  </ol>
+</body>
+You receive the following rendered output on the web page:
+= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf()); } parent.appendChild(elem); } } var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://'; var address = protocol + window.location.host + window.location.pathname + '/ws'; var socket = new WebSocket(address); socket.onmessage = function (msg) { if (msg.data == 'reload') window.location.reload(); else if (msg.data == 'refreshcss') refreshCSS(); }; if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) { console.log('Live reload enabled.'); sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true); } })(); } else { console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.'); } // ]]>
+You run the script and receive an unexpected output on the web page. Why?
+Incorrect -
+
+
+There is a missing double quote on the invalid yet interpretable attribute main="track.
+
+
+3. Why would you use service workers between web applications, the browser, and the network?
+
+To implement a proxy server between web applications, the browser, and the network
+
+
+4. You have two Cascading Style Sheets (CSS) scripts, foo.css and baz.css, in your src directory. You use the following code to include them in your HTML script:
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="src/*.css" rel="stylesheet">
+  </head>
+  <body>
+    <p> Hello, users! </p>
+  </body>
+</html>
+You render the script, but no HTML elements use CSS styles. Why?
+
+You included both CSS scripts using a single link element.
+
+
+5. Which browser hides the service worker APIs and stops working when the user is in private browsing mode?
+
+Mozilla Firefox
+
+6. You must display the following paragraph on your web page:
+Hello, user!
+We hope you are doing well.     You are 
+taking the HTML 5 assessment.
+How would you write its HTML script?
+
+<pre>
+Hello, user!
+We hope you are doing well.     You are 
+taking the HTML 5 assessment.
+</pre>
+
+
+7. The following <video> file was designed to restart when it reached its end and continue playing. It isn't restarting automatically when it reaches the end. What is the problem?
+<video controls width="250" >
+
+    <source src="/media/cc0-videos/flower.webm"
+            type="video/webm" loop="true" >
+
+    <source src="/media/cc0-videos/flower.mp4"
+            type="video/mp4" loop="true" >
+
+    Sorry, your browser doesn't support embedded videos.
+</video>
+
+
+loop is an attribute of <video> and not <source>
+
+
+8. Your website contains a large image that is 1280x1280 pixels. It also contains a lengthy paragraph of more than 500 words. You must align the image on the left side of the page and wrap the paragraph around it. You use the following code:
+<body>
+   <img src="./a_large_image.png" width="300" height="400">
+   <p>
+     A long paragraph .....
+   </p>
+</body>
+The image appears on the left side of the page, but the paragraph appears at the bottom of the image and does not wrap it. How can you resolve the wrapping issue?
+
+
+<img style="float: left;" 
+ src="./a_large_image.png" width="300" height="400">
+ 
+ 
+ 
+9. You install a new version of a service worker on your system to load all the pages that a user needs. When you run the application, the active worker is still the old service worker. How can you resolve this issue?
+
+Implement the ServiceWorkerGlobalScope.skipWaiting() method in the code snippet to change the active worker.
+
+
+10. You have a basic web page with the following HTML script:
+<html>
+  <body>
+    alert()
+  </body>
+</html>
+What happens when you render the above script?
+
+You receive the text alert() on the web page.
+
+
+11. Consider the following markup:
+<h2 name="top" >Chapter 1</h2>
+<a href="#top" >top</a>
+When a user selects the link, nothing happens. What must you change to resolve the problem?
+
+Change <h2 name="top" >Chapter 1</h2> to <h2 id="top" >Chapter 1</h2>.
+
+12. What is the minimum number of files you can upload to your website server using the following HTML code?
+<input type="file" id="custom" name="ps" multiple>
+
+0
+
+13. What would you add to the following code to provide alternate text if the browser does not support the JavaScript?
+<script>
+   document.write("Hello World!")
+</script>
+--INSERT HTML HERE--
+
+<noscript>Your browser does not support JavaScript!</noscript>
+
+
+14. You create multiple inline frames (iframes) to display Pluralsight courses on a web page. The following is the syntax of one iframe:
+<iframe style="height:400px;width:700px;" src="https://app.pluralsight.com/path/html"> </iframe>
+Your website displays the iframes successfully, but it renders extra code for users who use screen readers. How can you resolve this issue?
+
+
+Add a concise description of each iframe within its title attribute.
+
+
+15. When creating a form that will hold sensitive and secure data, what attribute would you add to prevent the form's <input> elements from auto populating?
+
+autocomplete
+
+16. Which HTML element is valid in HTML5?
+
+<datalist>
+
+17. Which input type in HTML specifies what file types users can pick using an <input> dialog box?
+
+accept
+
+8. Which element can you use to allow multi-line input?
+
+<textarea rows="10" cols="15" > </textarea>
+
+19. Which enctype attribute value is required when using forms that have an upload control?
+
+multipart/form-data
+
+20. You are making a website for school teachers to upload practice questions for their students. While writing an equation, you need symbols that indicate ^, _, and \. What would you use to obtain these symbols with respective American Standard Code for Information Interchange (ASCII) digits 94, 95, and 92?
+
+&#94;, &#95;, &#92; 
