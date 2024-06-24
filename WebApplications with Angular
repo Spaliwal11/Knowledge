@@ -1,0 +1,239 @@
+1. What is the key difference between template-driven and reactive forms?
+
+A template-driven form is asynchronous in nature; a reactive form is mostly synchronous
+
+
+2. You are making an application using different components in Angular. All the components are at the same level in the tree and the link to SecondComponent is located within the FirstComponent. 
+1.<h1>First Component</h1>
+2.<nav> 
+   <ul>
+3.  <li><a routerLink="second-component">Second Component Route</a></li> 
+4. </ul> 
+  </nav>
+When you run the code, the link to the SecondComponent is missing. Why?
+
+The notation ../ is missing from the third line
+
+
+3. What must you do to add an input element to the form (ngForm) when building template-driven forms?
+
+Set the name attribute in the input element.
+
+
+4. How would you tell Angular that the lazy loaded bundles should be loaded as soon as possible, without affecting the user interface?
+
+Using the PreloadAllModule strategy
+
+
+5. What is the difference between the canLoad and canActivate methods in Angular?
+
+canLoad prevents the app from loading the entire module lazily if the user is unauthorized.
+canActivate prevents unauthorized users from accessing certain routes.
+
+
+6. How can you add the validator function into the reactive forms?
+
+Directly add the function into the form control model in the component class.
+
+7. Why would you build a feature module?
+
+To partition an application into logical pieces that can be loaded as a unit
+
+8. What module must you import in your Angular code before making any HTTP GET requests?
+
+import { HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+
+
+9. What is the difference between a shared module and a core module an Angular application would commonly use?
+
+A shared module declares components, directives, and pipes the app would commonly use, while a core module contains the singleton services and modules the app's features would use.
+
+10. What is the correct syntax to associate an external template file orders.component.html to an OrdersComponent, when both are in the same orders/ folder?
+
+@Component({
+  templateUrl: './orders.component.html'
+})
+
+11. What role does NPM play in building Angular applications?
+
+NPM is the package manager that allows you to install the Angular command-line interface (CLI).
+
+
+12. What Angular class do you use to submit the form data to a remote server?
+
+HttpClient
+
+13. Which is the correct syntax for property binding?
+
+<img [src]="heroImageUrl">
+
+14. How do you set a new project to use *.scss files when using Angular?
+
+Choose the Sassy Cascading Style Sheets (SCSS) option from the interactive prompt when generating the project.
+
+15. What command creates a service named "myservice"?
+
+ng g service myservice
+
+16. What would you add to your application to increase its flexibility and modularity?
+
+Dependency injection
+
+17. You are building an application for your organization, but many of your users work with older versions of Internet Explorer. Which command should you run to create a project that will support Internet Explorer?
+
+ng new --legacy-browsers true
+
+18. Which Angular feature creates the user interface of your application?
+
+Components
+
+19. How do you use services in your Angular application?
+
+To share data or logic across components
+
+20. Which two utilities that Angular provides can you use to control and manipulate any asynchronous code in your unit tests?
+
+async and fakeAsync
+
+Set 2
+
+1. You are an Angular developer who must test code that uses LocationStrategy. While testing, you come across code that uses HashLocationStrategy.
+1. import {HashLocationStrategy, Location, LocationStrategy} from '@angular/common';
+2. import {Component} from '@angular/core';
+
+3. @Component({
+4.  selector: 'hash-location',
+5.  providers: [Location, {provide: location, useClass: HashLocationStrategy}],
+ ...
+})```
+When you run the code it produces an error, however. How can you fix this?
+
+Replace the location with LocationStrategy in the fifth line.
+
+
+2. In async testing, how can you wrap a test function in an asynchronous test zone? 
+
+By using waitForAsync()
+
+3. What is the purpose of the bootstrap array of an Angular module?
+
+To define the set of components that have functionalities that are needed while running an application
+
+4. . How do you create an observable that has already been multicast through connect()?
+
+Implement the connectable() function in the application.
+
+5. You perform integration testing. You first test the modules individually and then integrate and test them at the same time. Which type of integration testing are you performing?
+
+Big bang integration testing
+
+6. How can you stop the controller from moving on to the next instruction before the ongoing animations are finished? 
+
+Use the sequence() call.
+
+7. You have an Angular application that restricts access to the user area with a password. This area's home component is protected using the CanActivate route guard, but it has child routes. How do you protect these child routes?
+
+The home components route guard will protect the child routes. 
+
+9. What is the key difference between hot and cold observables?
+
+Cold observables produce data for separate subscribers, whereas hot observables do not.
+
+10. How would you test the correct binding of the event and inner functionality for the output property name "User1"?
+
+Use the method triggerEventHandler as follows:
+
+triggerEventHandler("editConfirmed","User1")
+
+11. How do you define the appropriate routerLink syntax to specify a path parameter?
+
+[routerLink]="['/heroes', hero.id]"
+
+12. Given the following route configuration, what must you configure on a second router outlet to load the two components?
+[{ 
+        path: 'main/:id',
+        children: [
+                { path: '', component: MainChild },
+                { path: '', component: SubChild, outlet: 'aux' }
+        ]
+}]
+
+<router-outlet name='aux'></router-outlet>
+
+13. What must you add on your second router-outlet if you want to use a component-less route to load two components?
+
+A name attribute that matches the outlet property of the second component
+
+14. How do you load an NgModule into its own bundle?
+
+Use lazy loading with the route that leads to the NgModule.
+
+15. What action must you take to create the form model (ngForm) to facilitate validation and error-handling when building template-driven forms?
+
+Define the form HTML element to create the form model (ngForm) automatically.
+
+16. What is the difference between the HttpClientTestingBackend and the HttpClientTestingModule?
+
+The HttpClientTestingModule configures the HttpClientTestingBackend.
+
+17. You are creating a new application using the Angular command-line interface (CLI). You want to use a separate styles file for each component and want to include a routing configuration. Which is the correct command to use to create the app?
+
+ng new --routing
+
+18. When is it appropriate to use optional parameters when dealing with routing?
+
+Use optional parameters when the value is not required, is complex, or has multiple values.
+
+21. What is the effect of creating an Angular application with the following command?
+
+ng new sample-app --create-application false
+
+It creates an empty workspace
+
+22. How does a template reference variable in the following code (#heroNameVar), help with validation of a template-driven form?
+<input id="heroNameId"
+       type="text"
+       required
+       [(ngModel)] = hero.name
+       name="heroName"
+       #heroNameVar="ngModel" />
+
+It provides a reference to an input element's state that you can use for styling errors or displaying validation error messages.
+
+23. How could you define the appropriate routerLink syntax to specify a required query parameter?
+
+
+[routerLink]="['/heroes']" [queryParams]="{id: hero.id}"
+
+24. What is the difference in how reactive forms and template-driven forms validate the information a user enters?
+
+Reactive forms use functions, while template-driven forms use directives.
+
+25. What is the purpose of the providers array of an Angular module?
+
+To define the set of objects available for dependency injection
+
+26. What do the routerLinkActive and routerLinkActiveOptions in this code do?
+<li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+     <a [routerLink]="['/heroes']">Hero List</a>
+</li>
+
+When the heroes route is activated, it styles the li element using the defined style ("active"), but only when there is an exact match to the route.
+
+27. How do you configure testing to ignore unknown attributes and elements in a template?
+
+By adding the CUSTOM_ELEMENTS_SCHEMA schema
+
+28. You must create a secondary route in Angular. Which property is responsible for identifying the target outlet in the Route object?
+
+outlet
+
+29. What is a common way to specify validation rules on an input element with template-driven forms?
+
+Add standard HTML validation attributes to the input element.
+
+30. Which interface and constructor does a Reactive Extensions for JavaScript (RxJS) implement to wire up an event and deliver values to the registered subscribers?
+
+Observer and observable
+
