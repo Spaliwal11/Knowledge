@@ -1,0 +1,156 @@
+1. You are creating an Angular application where you must manually set the runtime locale. What would you add to the following code so the runtime value is ar-SA?
+import { LOCALE_ID, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { ImageComp } from '../src/app/image.component';
+
+
+@NgModule({
+  imports: [ BrowserModule ],
+  declarations: [ ImageComp ],
+  providers: [{provide: LOCALE_ID}],
+  ...
+})
+
+export class AnalyzePictorial {... }
+
+
+useValue: 'ar-SA' in the providers
+
+
+2. What benefit does server-side rendering provide?
+
+It makes static files searchable and provides better search engine optimization (SEO) results.
+
+3. In the case of a command-line interface, how would you create an initial test file for a component?
+
+ng generate component modular --inline-template --inline-style --module app
+
+4. Why might you use a template reference variable?
+
+To provide a reference to a DOM element, directive, or component
+
+5. Which directive would you use to iterate over each form control with a form array?
+
+*ngFor
+
+6. How can you prevent users from visiting pages of your applications that they are not authorized to view?
+
+Use a route guard.
+
+7. What does two-way binding do?
+
+Allows components to share data
+
+8. What is a nested component?
+
+A child component whose tag is included in a parent component's template.
+
+9. What is the difference between two-way binding and event binding?
+
+Two-way binding listens for events and updates values between parent and child components, whereas event binding lets you respond to user actions.
+
+10. An Angular application shows a form that a user will fill out. The form contains a user's name, address, bio, and contact info. Some users submitted the form without filling in their bios. What might be the problem?
+
+The code is missing Validators.required.
+
+11. You write the following code to update a resource on a server using a PUT HTTP request. When you run the code, the resource does not change on the server. Why?
+//data.service.ts
+updateData(data: Data): Observable<Data> {
+ return this.http.put<Data>(this.datasUrl, data, httpOptions)
+ .pipe(catchError(this.handleError('updateData', data)));
+}
+
+----------------------------------------------------------------------
+
+//data.components.ts
+this.dataService.updateData(modifyData);
+
+
+You did not subscribe to an observable that the put() method returned.
+
+
+12. What decorator do you use to create a service in Angular?
+
+@Injectable
+
+13. What does two-way binding do?
+Allows you to listen for events and update values between parent and child components.
+
+14. A child component must implement two-way binding. What must you add to the child component to use two-way binding?
+
+The @Input and @Output decoratorsc
+
+15. What is true about two-way binding?
+
+Two-way binding allows you to listen for events and update values between components.
+
+16. An Angular application uses the following code snippet:
+@Component ({
+ selector: 'keyvalue-pipe',
+ template: '<span>
+  <div *ngFor="let i of items | keyvalue">
+   {{i.key}}
+  </div>
+ </span>'
+})
+
+export class CountryNames {
+ items: {[key:number]: string} = {1: 'Japan', 2: 'Spain', 3: 'France'};
+ ...
+}
+When you run the code, it shows the number, not the country names. How can you fix this?
+
+Add :{{i.value}} after {{i.key}} in the code.
+
+17. You are creating an Angular application that must show an image. What is the correct way to add the src property of the image to the img element?
+
+Use property binding, []
+<img alt=" " [src]=" ">
+
+18. How can you navigate between the views of your Angular application?
+
+Through routing
+
+
+19. Why would you implement a strictly typed form in your Angular application?
+
+To make the reactive forms fully type-safe
+
+20. What does a pipe do in Angular?
+
+Accepts an input value, transforms it, and returns this transformed value.
+
+
+
+21. Your application has an AdminArea component that only logged-in users can access. How can you prevent users who are not logged in from accessing this component?
+
+Use the CanActivate route guard.
+
+22. What does the @Input decorator do in a child component?
+
+Indicates that a property can receive its value from a parent component.
+
+23. What is a component in Angular?
+
+The main building block for Angular applications.
+
+24. You are creating a new component in your Angular application. What is the first thing you must do to use the component decorator?
+
+Import Component from '@angular/core'.
+
+25. Why do you use event binding in your code?
+
+To listen and respond to a user's actions
+
+26. What is the difference between a route guard and a wildcard route?
+
+The route guard prevents unauthorized access to restricted parts of your application, whereas the wildcard route handles invalid URLs.
+
+27. You build an Angular application with a form that a user must fill out before saving data. When a user attempts to save data after completing the form, however, the save button appears to be disabled. Why?
+
+
+The form is not in a valid state.
+
+
+
+
