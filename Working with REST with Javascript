@@ -1,0 +1,303 @@
+1. On the client-side, which HTML procedure allows you to associate a file with another item?
+
+Placing them in the same div
+
+
+2. You are requesting data from an OData-compliant REST API. The data source uses eager loading and contains a list of orders, along with the customer who made the order. You want to return a list of all the orders based on a particular customer using the following URI:
+https://rest.api/Orders/$filter=Orders/Customer eq 'Customer 1'
+Why would this be returning an error and not the list of Orders for "Customer 1"?
+
+The URI is missing $expand=Customer
+
+
+3. How can you instantly initialize a new project using npm with default values for all the command-line prompts?
+
+npm init --yes
+
+4. You want to gather user credentials with a form on an HTML login screen. You want to create the field which will gather the mandatory password, and will display a default value of 'Your password'. How will you do this? 
+
+<input type="password" placeholder="Your password" name="passw" required>
+
+
+5. You are building an HTML5 form for gathering user data. If you want to validate the data and provide helpful validation messages to your users, how will you change the input below so that the form checks that it is filled-in?
+<input id="choose" name="choose">
+
+<input id="choose" name="choose" required>
+
+6. What HTTP status code is returned when an item is not found for an update operation?
+
+404
+
+7. You need to develop an API method for retrieving customer data. But by default, when an error occurs, the only response is the status code returned. How can you offer more context about the issue and ease debugging?
+
+
+Wrap the API response in a JSON object and add more properties to describe the error.
+
+
+8. If you have an API endpoint that uses the DELETE method to remove an item, what HTTP status code is returned?
+
+200 or 204
+
+9. If a REST API call is successfully performed, understood, or accepted, what is the class of status codes that indicate this?
+
+2xx successfully
+
+10. You are working on a Node.js REST API. You finish implementing the 'register' endpoint for your application. You send back a response containing information on the accessible resources. What improvements can you make to the returned object?
+
+Also send back a token that the client can supply with subsequent requests
+
+11. Using Web Storage API, you are required to empty all items that have been saved in local storage. How can you achieve this?
+
+Call localStorage.clear() to remove all objects for the page domain.
+
+12. You are using JSON Web Token (JWT) in your application via a 'fetch' implementation. How can you pass the JWT bearer token to the server?
+
+fetch('/protected/endpoint', {
+  headers: {
+    'Authorization': 'Bearer ' + jwtToken
+  }
+})
+
+13. You need to create a new API method for updating a single item using Node.js and Express. What is the best practice in REST to accomplish this?
+
+router.put('/:id', (req, res) => {
+    const itemToUpdate = getItemById(req.params.id);
+
+    // ...
+});
+
+
+14. What XMLHttpRequest handler is called when the readyState value changes?
+
+onreadystatechange
+
+15. If your REST API approves a user authentication request, what should it omit from the response it sends back to the client?
+The password
+
+16. When requesting data from an OData-compliant REST endpoint, which query string parameter restricts the returned records by specifying key-value pairs that the underlying data source can search?
+
+$filter
+
+17. What is an advantage of using MongoDB as a database when developing a JavaScript server-side application?
+
+It makes it easier to save and retrieve data because documents in MongoDB are similar to JSON objects.
+
+18. What JavaScript data type is used to store a timestamp?
+
+date
+
+19. You are working on an API for performing Create, read, update and delete (CRUD) operations over a data source. However, the "200 OK" status code is returned when there is a server error. What should be returned instead?
+
+A 5xx server error class status code
+
+20. What HTML elements are used to display lists?
+
+<li>, <ol>, <ul>
+
+2. You are working on a JavaScript server-side application that already uses the Express web application framework. Alongside the REST API, you need to create a simple route for displaying data in the browser. How can you take advantage of the features offered by Express to accomplish this?
+
+Use the Express Generator tool to create an application skeleton for serving HTML.
+
+3. . You are using the allDocs PouchDB method to fetch multiple documents. Too many documents are being retrieved at once, causing significant performance issues in the UI. How can you retrieve the documents without causing UI issues, while also following the performance recommendations of PouchDB?
+
+Use the options.startkey and options.endkey arguments to implement pagination.
+
+4. In a JSON Web Token (JWT) payload, which claims type should be used to store the application specific user entity information?
+
+Private claims
+
+5. You need to write a JavaScript method that calls an API endpoint using the XMLHttpRequest object, and prints the response when the status value is equal to "OK". How can you accomplish this?
+
+let req = new XMLHttpRequest();
+
+req.onreadystatechange = function () {
+
+    if (this.readyState === XMLHttpRequest.DONE && 
+        this.statusText === 'OK') {
+
+        // print response...
+    }
+};
+
+6. Your JavaScript Cache contains the following URLs:
+http://pluralsight.com/?key1=value1
+http://pluralsight.com/?key2=value2
+What will happen when you issue a call to the match method on your cache, with a parameter of http://pluralsight.com, while also supplying the ignoreSearch option as true?
+
+http://pluralsight.com/?key1=value1 is matched
+
+7. What is the difference between the status message and the response body when handling error responses from a JSON REST API endpoint?
+
+The status message contains the HTTP status description. The response body contains a JSON object representing the error(s).
+
+8. You are implementing an application making use of Claims-Based Authorization with JSON Web Token (JWT). You authorize the user as follows:
+fetch(
+  `https://YOUR_DOMAIN/authorize?
+     response_type=token&
+     client_id=YOUR_CLIENT_ID&
+     redirect_uri=https://YOUR_APP/callback&
+     scope=openid profile
+  `
+)
+The data segment of the JWT token in the response doesn't include the user's name. Why doesn't the profile scope return the user's name as well?
+
+Many servers only return claim identifiers that can be used to retrieve resources.
+
+9. How would you create and use a custom exception middleware in Express?
+
+app.use(function (err, req, res, next) {
+    res.status(500).json({
+        status: 500,
+        message: 'Custom Error',
+    });
+});
+
+
+10. What type of object is expected when adding items to the JavaScript Cache?
+
+A REST API request URL to be retrieved and cached
+
+11. You set up JSON Web Tokens (JWT) on your Express application using the following code:
+const jwt = require('express-jwt');
+app.use(jwt({
+  secret: 'shhhhhhared-secret',
+  algorithms: ['HS256', 'RS256']
+}))
+A penetration test identifies that your website suffers from downgrade vulnerabilities. What could you do to address this?
+
+
+Do not mix symmetric and asymmetric algorithms.
+
+12. How can a JSON Web Token (JWT) be used for reading the user's claims?
+
+The token is an encoded JSON object containing the claims.
+
+13. You are debugging the API endpoint below that uses Node.js and Express. The request hangs and times out while testing an HTTP PUT request. What could be the problem?
+// ...
+
+router.put('/:id', (req, res) => {
+    const itemToUpdate = getItemById(req.params.id);
+
+    if (itemToUpdate) {
+        updateItem(req.body, req.params.id);
+    } else {
+        res.status(404).send();
+    }
+});
+
+// ...
+
+The HTTP 200 response status is not returned
+
+14. You instantiated a PouchDB database that you can access via the database variable. How can you store the following single JSON object into it?
+var recipe = {
+    _id: "123",
+    title: "Apple pie",
+    difficult: false
+};
+
+database.put(recipe, function callback(err, result) {
+    // handle error/result here
+ });
+ 
+ 15. You are working on a client-side implementation of a form for an item on an e-commerce site. One of the inputs on this form is a file. You want to place the input file on an area of the site that is not the form itself. How can you still associate the file with the form?
+ 
+ Set the input's form attribute to a value that matches the form's id.
+ 
+ 16. Which JavaScript function can be used to validate if a value is numeric?
+ 
+ isNaN()
+ 
+17. What is an example of a Node.js module specifically designed for handling file uploads on the server?
+
+Formidable
+
+18. You are developing an API method for inserting data using the code below:
+router.post('/', (req, res) => {
+    const newItem = req.body;
+
+    // insert item...
+
+    res.sendStatus(201).json({
+        message: 'Item created.',
+        data: newItem,
+    });
+});
+The response only contains the "Created" message and not the custom JSON payload. What changes would you make to fix this?
+
+The status() method should be used instead of sendStatus().
+
+19. What is an example of a JavaScript Cache API method that can help you determine if the cache needs updating?
+
+match
+
+20. You are working on a JSON Web Token (JWT) implementation for your application. How will you ensure that it correctly includes a user object in its request?
+
+const token = jwt.sign(user, privateKey, { expiresIn: '1h' });
+
+21. You are developing the error handling module below in Express to encapsulate all necessary error handling cases. The handlers are used in the order they are written.
+const logger = {
+    logToConsole: function (err, req, res, next) {
+        // handler code
+    },
+    logToFile: function (err, req, res, next) {
+        // handler code
+    },
+    genericLogger: function (err, req, res, next) {
+        // handler code
+        next();
+    },
+};
+When testing, you notice that only the first handler is ever called. What is the issue?
+
+The next() callback should be called in all handlers except the last one. 
+
+
+22. What is an advantage of using Express?
+
+It offers a fast and highly-customizable way of creating an HTTP server in Node.js.
+
+23. A deletion operation on an item is successful, but the URL is still valid. Which HTTP status code should be returned?
+
+204 No Content
+
+24. Which cache method is used to return a previously cached REST API response?
+
+cache.match(url)
+
+25. You are using Claims-based authorization via JSON Web Token (JWT) in your app. How will you parse the claims in a JWT token for a protected endpoint?
+
+app.get('/protected',
+  jwt({ secret: 'shhhhhhared-secret', algorithms: ['HS256'] }),
+  function(req, res) {
+    if (!req.user.admin) return res.sendStatus(401);
+    res.sendStatus(200);
+  });
+  
+
+26. You are using the XMLHttpRequest API to upload multiple files to a server asynchronously. You use xhr.upload.onprogress to track upload progress on each file (one file per request sent). How will you know when the upload is finished on a per-file basis?
+
+When the handler you define on the relevant file request's xhr.upload.onload object is triggered
+
+27. Your search form involves an identity field consisting of numeric digits. Instead of allowing the entry field to accept any character and then validating this, you want to restrict entry to numeric characters only. What function will achieve this when responding to the onkeypress event?
+
+function validate(evt){
+     evt.value = evt.value.replace(/[^0-9]/g,"");
+}
+
+
+28. Why might you prefer using the scope parameter to secure UI elements instead of a custom parameter?
+
+The scope parameter is verified by the server and automatically corrected.
+
+
+29. Your JavaScript Cache contains the following URLs:
+http://pluralsight.com/?key1=value1
+http://pluralsight.com/?key2=value2
+You want to see if an entry is in the cache or if you need to go to API. What will happen when you issue a call to the match method on your cache, with a parameter of http://pluralsight.com, and no other options supplied?
+
+No matches will be returned.
+
+30. In JSON Web Token - (JWT) based authorization, what is the secret key used for?
+
+To generate a unique signature for the token
