@@ -1,0 +1,343 @@
+Querying Data with SQL
+
+Querying Data with SQL in MariaDB
+
+1. What would be the result of the given script?
+SELECT CASE BINARY 'B' WHEN 'a' THEN 1 WHEN 'b' THEN 2 END;
+
+	NULL
+
+2. How can you change the parameters of a stored procedure?
+
+	By dropping and replace the stored procedure
+
+3. A stored procedure calls CURRENT_USER(). What is the output of the call?
+
+	Owner of the procedure
+
+4. You are working on a table named "MaterialDiscount" that contains three columns: Product, Price, and Discount, where Discount is a ratio. How would you retrieve all data from the table, with an additional column calculating price after discount?
+
+	SELECT Product, Price, Discount, Price - Price*Discount AS 'Price after discount' FROM MaterialDiscount;
+
+5. The script SELECT 50/(5-5); throws an error:  ERROR_ON_DIVISION_BY_ZERO What could be the reason?
+
+	SQL mode is used.
+
+6. Which of the following is true about alias in a query?
+
+	It is a correlation name 
+
+7. What is the difference between CURRENT_USER() and USER()?
+
+	USER() returns the username and hostname given when authenticating MariaDB, while CURRENT_USER returns the username and hostname from the MariaDB account that the server used to authenticate the current client.
+
+8. You are working on a table named Donations that contains columns Id (text), Prefix (numeric), and Suffix (text). There is a script to retrieve data which throws an error. 
+SELECT Id, Prefix + Suffix AS Donation FROM Donations;
+How would you fix the error?
+
+	SELECT Id, CAST(Prefix AS CHAR(20)) + Suffix AS Donation FROM Donations;
+
+9. What is the default order of the SELECT query?
+
+	No order
+
+10. Which of the following is a numeric data type?
+
+	BOOLEAN
+
+11. You are working with four SQL queries given below:
+SELECT * FROM USER;
+SHOW AUTHORS;
+SHOW COLUMNS FROM USER;
+RENAME USER STAT TO STANLEY;
+How many of the above queries are DQL?
+
+	3
+
+12. What is true for the ALTER PROCEDURE statement?
+
+	It can be used to change the characteristics of a stored procedure.
+
+13. Which command will execute a stored procedure?
+
+	CALL
+
+14. You are required to create a stored procedure that retrieves outdated records from master data tables. For inactive records, a column named ActiveInd is set to 0 in every master data table. How would you create this stored procedure?
+
+	CREATE PROCEDURE FetchInactive ( param CHAR(100))
+	 BEGIN
+	 SELECT * FROM param WHERE ActiveInd = 0;
+	 END 
+
+15. You created a stored procedure "Changemap" that has security characteristics set as definer. It deletes some data while executing. How would you ALTER the procedure so that everyone cannot use the procedure to delete data?
+
+	ALTER PROCEDURE Changemap SQL SECURITY INVOKER;
+
+16. Which of the following privileges are required to delete a procedure?
+
+	ALTER ROUTINE
+
+17. You are working on a table named Student that contains three columns: Name, Subject, and Marks. How would you describe the result of the SQL statement given below? 
+SELECT Name, Subject, AVG(Marks) FROM Student;
+
+	Result would be incorrect and mismatched.
+
+18. You are working on a data-set named Flight that contains two columns: Origin and Destination. You are required to create a recursive common table expression that selects all the destinations one can reach from origin "London". Which code would do the job?
+
+	WITH RECURSIVE Route AS (
+	SELECT Origin AS Destination FROM Flight WHERE Origin = "London"
+	UNION
+	SELECT Flight.Destination FROM Flight, Route WHERE Route.Destination = Flight.Origin
+	)
+
+19. You are working on concatenating two variables VAR1 and VAR2 with the script given below. Either of the variables may contain a NULL value.
+
+CONCAT(VAR1, VAR2);
+
+The script results in a NULL. How can you handle the expected NULL value?
+
+	CONCAT(IFNULL(VAR1, " "), IFNULL(VAR2, " "));
+
+20. You are working on a table named Marks that has four columns: Id, Math, Science, and Arts. How would you get Id and Math where items in Math are in ascending order?
+
+	SELECTS Id, Math FROM Marks ORDER BY Math;
+
+21. Which of the following is NOT a select expression?
+
+	Database_name.*
+
+22. What does the window function do?
+
+	Calculates an aggregate value based on a group of rows and returns multiple rows for each group
+
+23. You are working on a stored procedure named InventoryBuckets and there is a confirmed requirement to tweak the logic of the body. What do you need to do first considering you have backup of code and now need to update the stored procedure with same name?
+
+	DROP PROCEDURE InventoryBuckets;
+
+24. You are working on two tables named Vendor and Customer that both require their columns to be updated to IsCustomer and IsVendor respectively. By default, the columns IsCustomer and IsVendor are set to 0. How can you update the respective columns for the records that are present in both tables by comparing the Id column of both tables?
+
+	UPDATE Vendor, Customer SET Vendor.IsCustomer = 1 , Customer.IsVendor = 1 WHERE Vendor.Id = Customer.Id;
+
+25. Which command will NOT return a current user?
+	
+	DEFAULT_USER
+
+26. How would you create a stored procedure to retrieve all data from a table named 'Sales'?
+
+	CREATE PROCEDURE Retrieve_Sales  BEGIN SELECT * FROM Sales; END;
+
+27. What is the range of the unsigned tinyint data type?
+
+	0 to 255 
+
+28.
+SELECT CURDATE(); 
+The script above is used to generate the current date in a string format. How would you generate it in a numeric format?
+
+	SELECT CURDATE() + 0;
+
+29. You are working on a table named Inventory with four columns: Product, Price, Discount, and Stock, where the discount is a percentage (whole number). How would you calculate the total amount and the amount given as a discount?
+
+	SELECT SUM(Price*Stock) AS 'Total Amount', SUM(Price*Stock*Discount)/100 AS 'Total Discount' FROM Inventory;
+
+30. How many columns can be concatenated using CONCAT?
+
+	255
+
+21. You are working on a table named Marks that has four columns: Id, Math, Science, and Arts. How would you get Id, Math, and Science, where Math marks are in ascending order and Science marks are in descending order?
+
+	SELECTS Id, Math, Science FROM Marks ORDER BY Math ASC, Science DESC;
+
+26. What is the default type of the parameter in a stored procedure?
+	
+	IN
+
+27. What is the difference between SELECT and TRUNCATE?
+
+	SELECT is a DQL statement, while TRUNCATE is a DDL statement.
+
+24. You create a stored procedure and want to change its characteristics. What would happen if you tried to alter the procedure?
+
+	The procedure would be altered without an error.
+
+28. You are required to create a procedure that counts the number of rows of any table passed as an argument and store it in an output argument. How would you create this procedure?
+
+	CREATE PROCEDURE FetchData (IN param1 CHAR(100), OUT param2 INT)
+ BEGIN 
+ SELECT COUNT(*) INTO param2 FROM param1;
+ END;
+
+1. The script given below has an output of 3.
+SELECT CEILING(2.34);  
+What is the outcome of the script SELECT CEILING(-2.34);?
+
+-2
+
+2. You are required to create a stored procedure that retrieves outdated records from master data tables. For inactive records, a column named ActiveInd is set to 0 in every master data table. How would you create this stored procedure?
+
+CREATE PROCEDURE FetchInactive ( param CHAR(100))
+ BEGIN
+ SELECT * FROM param WHERE ActiveInd = 0;
+ END 
+ 
+ 
+3. The script SELECT 50/(5-5); throws an error:  ERROR_ON_DIVISION_BY_ZERO What could be the reason?
+
+SQL mode is used.
+
+4. A stored procedure calls CURRENT_USER(). What is the output of the call?
+
+Owner of the procedure
+
+5. Which of the following is true about alias in a query?
+
+It is a correlation name 
+
+6. What is the difference between SELECT and TRUNCATE?
+
+SELECT is a DQL statement, while TRUNCATE is a DDL statement.
+
+7. What is a Common Table Expression (CTE)?
+
+Defines a temporary result set which can be used in a SELECT statement
+
+
+8. What is the purpose of the ORDER BY clause?
+
+It allows sorting by one or more columns.
+
+9. Which of the following is an aggregate function?
+
+COUNT
+
+10. What is the purpose of the IN clause?
+It returns values that match in a list.
+
+11. You are working on a table named Inventory that has three columns; Product, Brand, and Stock. How can you retrieve the Product data for Cereals?
+
+SELECT * FROM Inventory WHERE Product = "Cereals".  
+
+12. You are working on a table named Assignment, with two columns: Name and Topic. There is a requirement of concatenating the string 'Your assignment is: ' with the column Topic while retrieving data from the table. How would you accomplish this?
+
+SELECT Name, CONCAT('Your Assignment is: ' , Topic) FROM Assignment;
+
+13. Which is a valid data type?
+
+Binary
+
+14. You are working on a table named Customer, that contains data about different purchased products. Entries of several products were set as detergent instead of Soap. How would you update all rows of the column Product to Soap?
+
+Update Customer SET Product = 'Soap' WHERE Product = 'detergent'
+
+15. A table contains 5000 records, and there are a number of redundant values in a column. How would you find the unique values of the column?
+
+Select Distinct column_name from table_name
+
+16. A table named Customer has two columns: Id and Name. How would insert values ('234', 'James') into the table?
+
+INSERT INTO Customer (Id, Name) VALUES ('234', 'James')
+
+17. What happens when the DELETE statement is used without the WHERE clause?
+
+All rows are deleted
+
+18. You are working on a table named "Stock" that has three columns: "ProductType", "Brand", and "Stock". How can you get the aggregated stock of each product type?
+
+SELECT ProductType, SUM(Stock) FROM Stock GROUP BY ProductType;
+
+19. What is the difference between INNER and LEFT OUTER JOIN?
+
+INNER join selects matching records in both tables, whereas LEFT OUTER JOIN will select the first table with matching records of the second table.
+
+20. What is the scope of Data Manipulation Language in SQL?
+
+The SQL commands that deal with data manipulation in a database.
+
+21. You are working with two tables Marks and Student. Marks contains data of student's marks who are allowed to sit in the exam and has two columns: Id and Marks. Student contains two columns: Id and Name. How would you find the name of students who are allowed to sit in the exam?
+
+SELECT Name FROM Student WHERE Id IN(SELECT Id FROM Marks);
+
+2. What does a TRUNCATE(X, D) function return?
+It returns a number X truncated to D decimal places.
+
+4. Which is NOT a type of parameter in stored procedures?
+
+EXTEND
+
+5. You are working on a table named Employee that contains five columns: Id, JoiningDate, Status, Salary, and Phone. The Status column denotes the status of an employee as 1 if they work at the company and 0 if they left the company. You need to create a stored procedure to store the status of the employee in the output parameter when the corresponding Id is passed in the procedure. Which code would create the procedure?
+
+DELIMITER $$
+CREATE PROCDURE FetchStatus( IN param INTEGER, OUT param1 INTEGER)
+BEGIN 
+SELECT Status INTO param1 FROM Employee WHERE Id = param;
+END $$
+
+7. You are working on a table named Sales that contains three columns: Product, TotalSales, and MaxInd. Initially, the column MaxInd is set to 0. How can you update the MaxInd column for the rows that have the maximum TotalSales?
+
+UPDATE Sales SET MaxInd = 1 WHERE TotalSales = (SELECT MAX(TotalSales) FROM Sales);
+
+8. You are working on a table named Inventory with four columns: Product, Price, Discount, and Stock, where the discount is a percentage (whole number). How would you calculate the total amount and the amount given as a discount?
+
+SELECT SUM(Price*Stock) AS 'Total Amount', SUM(Price*Stock*Discount)/100 AS 'Total Discount' FROM Inventory;
+
+1. What is difference between LENGTH and BIT_LENGTH?
+
+LENGTH returns the length of the string, while BIT_LENGTH returns the length of the string in bits.
+
+13. You need to insert a few records in a table, but you don't know if the records are duplicate on the primary key or not. If it is a duplicate, then you need to perform an update only. How can you accomplish this?
+
+INSERT … ON DUPLICATE KEY UPDATE …
+
+14. What would be the result of the given script?
+SELECT CASE BINARY 'B' WHEN 'a' THEN 1 WHEN 'b' THEN 2 END;
+
+NULL
+
+15. Which of the following is used to display columns in a table?
+
+SHOW COLUMNS
+16. Which command will NOT return a current user?
+
+DEFAULT_USER
+
+17. Which of the following SQL keywords cannot be combined with the WHERE clause?  
+
+INSERT
+
+8. You are required to write a Common Table Expression (CTE) for a complicated query that is being used frequently. Which of the following is the correct syntax to write a CTE?
+
+WITH CTEName (Columns names,…) AS( Definition)
+
+19. What can be used to implement if/else logic?
+
+CASE
+
+20. You are working on two tables: Inventory with columns Material, Type, and Stock, and Summary with columns Type and Total. The Total column contains total value according to type. How would you create a transaction that updates the sum of stock that has Type as Grocery in the Summary table?
+
+START TRANSACTION;
+SELECT @stockSum = SUM(Stock) FROM Inventory WHERE Type = "Grocery";
+UPDATE Summary SET Total = @stockSum WHERE Type = "Grocery";
+COMMIT;
+
+23. Which function will generate the current date?
+
+CURDATE()
+
+24. You need to delete all records of a table named ExpiredItems. Which of the following is an efficient way to clear the table?
+
+TRUNCATE ExpiredItems;
+
+26. You are required to create a stored procedure that calculates the total stock price from a table named Inventory, that has columns Product, Type, Price, and Stock. Which script will create the procedure?
+
+CREATE PROCEDURE TotalStock (OUT param int)
+BEGIN
+SELECT SUM(Price*Stock) INTO param FROM Inventory;
+END;
+
+27. You create a stored procedure and want to change its characteristics. What would happen if you tried to alter the procedure?
+
+he procedure would be altered without an error.
+
+28. What is the difference between UNION and UNION ALL operator?
+
+UNION operator removes the duplicate from the result set, but UNION ALL retains the duplicates.
